@@ -20,7 +20,7 @@ class FizzBuzzTest extends TestCase
 
         $this->assertEquals('Buzz', $fizzBuzz->diNum(5));
     }
-    
+
     public function testCuandoDoyElNum15MeDaFizzBuzz(): void
     {
         $fizzBuzz = new FizzBuzz();
@@ -33,5 +33,27 @@ class FizzBuzzTest extends TestCase
         $fizzBuzz = new FizzBuzz();
 
         $this->assertEquals(2, $fizzBuzz->diNum(2));
+    }
+
+    /**
+     * @dataProvider casosDeUso
+     */
+    public function testFizzBuzz($numeroAtestear, $resultadoEsperado)
+    {
+        $fizzBuzz = new FizzBuzz();
+
+        $resultado = $fizzBuzz->diNum($numeroAtestear);
+
+        $this->assertEquals($resultadoEsperado, $resultado);
+    }
+
+    public function casosDeUso(): array
+    {
+        return [
+            [3, 'Fizz'], // cada elemento del array, va a testear como si fuera un nuevo test
+            [5, 'Buzz'],
+            [15, 'FizzBuzz'],
+            [1, 1]
+        ];
     }
 }
