@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    web:
+        image: php:7.4.9-apache
+        ports:
+            - 8888:80
+        volumes:
+            - .:/var/www/html
+        links:
+            - 'db'
+    db:
+        image: mysql:8.0
+        volumes:
+            - mysql_volume:/var/lib/mysql
+        environment:
+            TZ: "España/Madrid"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_ROOT_PASSWORD: "webinar-root-pass"
+            MYSQL_USER: 'webinar-user'
+            MYSQL_PASSWORD: 'webinar-pass'
+            MYSQL_DATABASE: 'webinar-db'
+
+    adminer:
+        image: adminer
+        ports:
+        -  8889:8080
+
+volumes:
+    mysql_volume:
