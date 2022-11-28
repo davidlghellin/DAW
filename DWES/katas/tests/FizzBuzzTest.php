@@ -7,6 +7,9 @@ use PHPUnit\Framework\TestCase;
 
 class FizzBuzzTest extends TestCase
 {
+    /**
+     * @covers App\FizzBuzz::diNumero
+     */
     public function testCuandoDoyElNum3MeDaFizz(): void
     {
         $fizzBuzz = new FizzBuzz();
@@ -14,6 +17,9 @@ class FizzBuzzTest extends TestCase
         $this->assertEquals('Fizz', $fizzBuzz->diNum(3));
     }
 
+    /**
+     * @covers App\FizzBuzz::diNumero
+     */
     public function testCuandoDoyElNum5MeDaBuzz(): void
     {
         $fizzBuzz = new FizzBuzz();
@@ -21,6 +27,9 @@ class FizzBuzzTest extends TestCase
         $this->assertEquals('Buzz', $fizzBuzz->diNum(5));
     }
 
+    /**
+     * @covers App\FizzBuzz::diNumero
+     */
     public function testCuandoDoyElNum15MeDaFizzBuzz(): void
     {
         $fizzBuzz = new FizzBuzz();
@@ -28,6 +37,9 @@ class FizzBuzzTest extends TestCase
         $this->assertEquals('FizzBuzz', $fizzBuzz->diNum(15));
     }
 
+    /**
+     * @covers App\FizzBuzz::diNumero
+     */
     public function testCuandoDoyUnNum(): void
     {
         $fizzBuzz = new FizzBuzz();
@@ -37,6 +49,7 @@ class FizzBuzzTest extends TestCase
 
     /**
      * @dataProvider casosDeUso
+     * @covers App\FizzBuzz::diNumero
      */
     public function testFizzBuzz($numeroAtestear, $resultadoEsperado)
     {
