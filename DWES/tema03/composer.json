@@ -1,5 +1,5 @@
 {
-    "name": "david/katas",
+    "name": "david/conexiones",
     "description": "Ejemplo conexiones",
     "authors": [
         {
@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "web/"
         }
     },
     "autoload-dev": {

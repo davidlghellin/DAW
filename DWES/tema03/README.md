@@ -25,7 +25,7 @@ docker system prune -a
 En la terminal del devcontainer
 ```shell
 composer require phpunit/phpunit --dev
-mkdir tests src
+mkdir tests web
 ./vendor/bin/phpunit tests/
 
 ./vendor/bin/phpunit --generate-configuration
