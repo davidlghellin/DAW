@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+    web:
+        # image: php:7.4.9-apache
+        build: .
+        ports:
+            - 8888:80
+        volumes:
+            - .:/var/www/html
+        links:
+            - 'db'
+        # añdimos las redes para q 
+        networks:
+            - default
+    db:
+        image: mysql:8.0
+        volumes:
+            - mysql_volume:/var/lib/mysql
+            # https://onexlab-io.medium.com/docker-compose-mysql-multiple-database-fe640938e06b
+            - ./init:/docker-entrypoint-initdb.d
+        environment:
+            TZ: "España/Madrid"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_ROOT_PASSWORD: "webinar-root-pass"
+            MYSQL_USER: 'gestor'
+            MYSQL_PASSWORD: 'secreto'
+            MYSQL_DATABASE: 'proyecto'
+        ports:
+        -  3307:3306
+        -  33061:33060
+        networks:
+            - default
+        restart: always
+    adminer:
+        image: adminer
+        ports:
+        - 8889:8080
+        networks:
+            - default
+
+volumes:
+    mysql_volume:
+# https://stackoverflow.com/questions/50379839/connection-java-mysql-public-key-retrieval-is-not-allowed
+# allowPublicKeyRetrieval=true&useSSL=false

@@ -10,7 +10,7 @@ composer require phpunit/phpunit --dev
 Generaremos una conf para phpunit
 
 ```shell
-/vendor/bin/phpunit --generate-configuration
+./vendor/bin/phpunit --generate-configuration
 ```
 Con el fichero `phpunit.xml.dist` ya podemos hacer solo `/vendor/bin/phpunit`
 
