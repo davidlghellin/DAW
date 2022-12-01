@@ -19,17 +19,19 @@ $resultado = $conProyecto->query('SELECT id, nombre, tlf FROM tiendas', MYSQLI_U
         </thead>
         <tbody>
             <?php
-            while ($row = $resultado->fetch_row()) {
+            while ($row = $resultado->fetch_assoc()) {
                 echo '<tr>';
                 echo '<th scope="row">1</th>';
-                printf('<td>%d</td>', $row[0]);
-                printf('<td>%s</td>', $row[1]);
-                printf('<td>%s</td>', $row[2]);
+                printf('<td>%d</td>', $row['id']);
+                printf('<td>%s</td>', $row['nombre']);
+                printf('<td>%s</td>', $row['tlf']);
                 echo '<td>
-                        <button class="btn" href="./views/tienda/editar-tienda.php?p=1">
+                        <a href="./editar-tienda.php?id='.$row['id'].'&nmbr='.$row['nombre'].'&tlf='.$row['tlf'].'" >      
+                          <button class="btn btn-success">
                             <i class="fa-solid fa-user-pen"></i>
-                        </button>
-                        <button class="btn" title="Eliminar registro" onclick="fntDelTienda(1)">
+                          </button>
+                        </a>
+                        <button class="btn btn-danger" title="Eliminar registro">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                       </td>';
