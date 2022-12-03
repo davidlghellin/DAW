@@ -2,3 +2,5 @@
 **/vendor/
 .yarn-integrity
 **/.phpunit.cache/
+**/target/
+
