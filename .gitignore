@@ -3,4 +3,10 @@
 .yarn-integrity
 **/.phpunit.cache/
 **/target/
+**/.bloop/
+**/.bsp/
+**/.metals/
+**/project/
+**/target/
+**/.vscode/
 
