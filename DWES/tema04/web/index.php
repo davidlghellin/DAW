@@ -43,10 +43,30 @@ if ($num_registro == 0) {
     $stmt = null;
     $conProyecto = null;
     die();
-}
-else{
+} else {
     $stmt = null;
     $conProyecto = null;
+
+    setcookie("prueba", "esta es la primera cookie");
+
+    setlocale(LC_ALL, 'es_ES.UTF-8');
+    date_default_timezone_set('Europe/Madrid');
+    $ahora = new DateTime();
+    $fecha = strftime(
+        "Tu última visita fué el %A, %d de %B de %Y a las %H:%M:%S",
+        date_timestamp_get($ahora)
+    );
+    // si existe la cookie recupero su valor
+    if (isset($_COOKIE[$_SERVER['PHP_AUTH_USER']])) {
+        $mensaje = $_COOKIE[$_SERVER['PHP_AUTH_USER']];
+    } //si no existe es la primera visita para este usuario
+    else {
+        $mensaje = "Es la primera vez que visitas la página.";
+    }
+    //Creo o actualizo la cookie con la nueva fecha de acceso, la cookie durara una semana, hay que darlo en segundos
+    setcookie($_SERVER['PHP_AUTH_USER'], "$fecha", time() + 7 /*días*/ * 24 /*horas*/ * 60 /*minutos*/ * 60 /*segundos*/);
+
+    echo $fecha;
 }
 require_once("./views/template/header.php");
 ?>
@@ -64,6 +84,10 @@ require_once("./views/template/header.php");
         <label for="txtNonbre" class="font-weight-bold">Pass en sha</label>
         <br>
         <?php echo hash('sha256', $_SERVER['PHP_AUTH_PW']); ?>
+    </div>
+    <div class="form-group">
+        <a href="./micookie.php" class="btn btn-success">cookies</a>
+
     </div>
 </main>
 <?php

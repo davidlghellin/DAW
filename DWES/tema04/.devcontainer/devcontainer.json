@@ -22,7 +22,8 @@
 		"felixfbecker.php-debug",
 		"felixfbecker.php-intellisense",
         "vivaxy.vscode-conventional-commits",	
-		"eamodio.gitlens"
+		"eamodio.gitlens",
+		"oderwat.indent-rainbow"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
