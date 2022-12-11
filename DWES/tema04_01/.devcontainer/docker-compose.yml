@@ -1,0 +1,41 @@
+version: "3.7"
+services:
+  web-server:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    restart: always
+    volumes:
+      - "../:/var/www/html/"
+    ports:
+      - "8888:80"
+    networks:
+      - default
+  mysql-server:
+    image: mysql:8.0.19
+    restart: always
+    environment:
+      TZ: "España/Madrid"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+      MYSQL_ROOT_PASSWORD: "webinar-root-pass"
+      MYSQL_USER: 'gestor'
+      MYSQL_PASSWORD: 'secreto'
+      MYSQL_DATABASE: 'proyecto'
+    volumes:
+      #- "../.mysql-data:/var/lib/mysql"
+      - mysql_volume:/var/lib/mysql
+      - ../init:/docker-entrypoint-initdb.d
+    ports:
+    -  3307:3306
+    -  33061:33060
+    networks:
+      - default
+
+  adminer:
+    image: adminer
+    ports:
+    - 8889:8080
+    networks:
+      - default
+volumes:
+  mysql_volume:
