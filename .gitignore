@@ -9,4 +9,5 @@
 **/project/
 **/target/
 **/.vscode/
+**/__pycache__/
 
