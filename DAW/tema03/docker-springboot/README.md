@@ -27,3 +27,17 @@ Sino hacemos un curl
 curl 127.0.0.1:8080/hola
 ```
 
+## Ejecutar
+Para ejecutar usando devcontainer cuando estemos dentro podemos hacer
+´´´
+mvn spring-boot:run
+´´´
+y con esto ya tenemos el jar corriendo.
+
+```
+http get 127.0.0.1:8080/hola
+```
+Sino hacemos un curl
+```
+curl 127.0.0.1:8080/hola
+```
