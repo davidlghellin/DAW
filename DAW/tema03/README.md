@@ -23,3 +23,18 @@ Comprobar que funciona
 ```
 curl http://localhost:8080/dockerbasico/hola
 ```
+
+## JSP
+Ahora lo que vamos a hacer es añadir un simple fichero `jsp`, con ello ahora tendremos dos aplicaciones corriendo
+
+```
+docker build -t mywebwar .
+
+docker run -p 8080:8080  mywebwar
+```
+Podemos comprobar
+```
+curl http://localhost:8080/dockerbasico/hola
+
+curl http://localhost:8080/Aplic_Web/index.jsp
+```
