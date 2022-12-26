@@ -41,3 +41,9 @@ Sino hacemos un curl
 ```
 curl 127.0.0.1:8080/hola
 ```
+
+## WAR
+Para generar el war con los cambios que hemos realizado
+```
+mvn install
+```

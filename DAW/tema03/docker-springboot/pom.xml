@@ -18,6 +18,13 @@
         <java.version>1.8</java.version>
     </properties>
 
+
+    <!--INI WAR-->
+    <packaging>war</packaging>
+    <!--para saber que versión de tomcat usa-->
+    <!--https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat/2.2.6.RELEASE-->
+    <!--FIN WAR-->
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,6 +42,14 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        
+        <!--INI WAR-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--FIN WAR-->
     </dependencies>
 
     <build>
