@@ -14,7 +14,7 @@ services:
       - default
   mysql-server:
     image: mysql:8.0.19
-    restart: always
+      # restart: always
     environment:
       TZ: "España/Madrid"
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
