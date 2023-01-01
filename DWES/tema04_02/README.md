@@ -23,4 +23,4 @@ docker system prune -a
 ```
 
 ## Página de inicio
-http://localhost:8888/web/login.php
+http://localhost:8888/login.php

@@ -7,7 +7,7 @@ services:
         ports:
             - 8888:80
         volumes:
-            - .:/var/www/html
+            - ./web:/var/www/html
         links:
             - 'db'
         # añdimos las redes para q 

@@ -1,16 +1,13 @@
 <?php
 session_start();
-require_once './conexion.php';
-
+require_once 'conexion.php';
 function error($mensaje)
 {
     $_SESSION['error'] = $mensaje;
-    // TODO revisar este error
-    // header('Location:login.php');
+    header('Location: login.php');
     die();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -54,7 +51,7 @@ function error($mensaje)
         //Nos hemos validado correctamente creamos la sesion de usuario con el nombre de usuario
         $_SESSION['nombre'] = $nombre;
         // TODO revisar este error
-        // header('Location:listado.php');
+        header("Location: listado.php/");
     } else {
     ?>
         <div class="container mt-5">
