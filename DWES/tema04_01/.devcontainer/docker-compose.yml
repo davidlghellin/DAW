@@ -32,11 +32,11 @@ services:
     networks:
       - default
 
-  adminer:
-    image: adminer
-    ports:
-    - 8889:8080
-    networks:
-      - default
+#  adminer:
+#    image: adminer
+#    ports:
+#    - 8889:8080
+#    networks:
+#      - default
 volumes:
   mysql_volume:

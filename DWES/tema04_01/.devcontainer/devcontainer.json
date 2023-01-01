@@ -5,7 +5,7 @@
 	"service": "web-server",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/var/www/html,type=bind,consistency=cached",
 	"workspaceFolder": "/var/www/html",
-	"runServices": ["mysql-server", "adminer", "web-server"],
+	"runServices": ["mysql-server", "web-server"],
 	
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
