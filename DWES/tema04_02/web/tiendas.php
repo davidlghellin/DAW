@@ -14,7 +14,6 @@ $resultado = $conProyecto->query('SELECT id, nombre, tlf FROM tiendas', MYSQLI_U
                 <th scope="col">Código</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Teléfono</th>
-                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -25,16 +24,6 @@ $resultado = $conProyecto->query('SELECT id, nombre, tlf FROM tiendas', MYSQLI_U
                 printf('<td>%d</td>', $row['id']);
                 printf('<td>%s</td>', $row['nombre']);
                 printf('<td>%s</td>', $row['tlf']);
-                echo '<td>
-                        <a href="./editar-tienda.php?id='.$row['id'].'&nmbr='.$row['nombre'].'&tlf='.$row['tlf'].'" >      
-                          <button class="btn btn-success">
-                            <i class="fa-solid fa-user-pen"></i>
-                          </button>
-                        </a>
-                        <button class="btn btn-danger" title="Eliminar registro">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                      </td>';
                 echo '</tr>';
             }
             ?>

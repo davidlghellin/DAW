@@ -4,56 +4,46 @@ require_once 'conexion.php';
 function error($mensaje)
 {
     $_SESSION['error'] = $mensaje;
+    // delante de los header no puede haber nada de html
     header('Location: login.php');
     die();
 }
-?>
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Fontawesome CDN -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <title>Login</title>
-</head>
-
-<body style="background:silver;">
-    <?php
-    if (isset($_POST['login'])) {
-        $nombre = trim($_POST['usuario']);
-        $pass = trim($_POST['pass']);
-        if (strlen($nombre) == 0 || strlen($pass) == 0) {
-            error("Error, El nombre o la contraseña no pueden contener solo espacios en blancos.");
-        }
-        //creamos el sha256 de la contraseña que es como se almacena en mysql
-        $pass1 = hash('sha256', $pass);
-        $consulta = "select * from usuarios_pass where usuario=:u AND password=:p";
-        $stmt = $conProyecto->prepare($consulta);
-        try {
-            $stmt->execute([
-                ':u' => $nombre,
-                ':p' => $pass1
-            ]);
-        } catch (PDOException $ex) {
-            cerrarTodo($conProyecto, $stmt);
-            error("Error en la consulta a la base de datos.");
-        }
-        if ($stmt->rowCount() == 0) {
-            unset($_POST['login']);
-            cerrarTodo($conProyecto, $stmt);
-            error("Error, Nombre de usuario o password incorrecto");
-        }
+if (isset($_POST['login'])) {
+    $nombre = trim($_POST['usuario']);
+    $pass = trim($_POST['pass']);
+    if (strlen($nombre) == 0 || strlen($pass) == 0) {
+        error("Error, El nombre o la contraseña no pueden contener solo espacios en blancos.");
+    }
+    //creamos el sha256 de la contraseña que es como se almacena en mysql
+    $pass1 = hash('sha256', $pass);
+    $consulta = "select * from usuarios_pass where usuario=:u AND password=:p";
+    $stmt = $conProyecto->prepare($consulta);
+    try {
+        $stmt->execute([
+            ':u' => $nombre,
+            ':p' => $pass1
+        ]);
+    } catch (PDOException $ex) {
         cerrarTodo($conProyecto, $stmt);
-        //Nos hemos validado correctamente creamos la sesion de usuario con el nombre de usuario
-        $_SESSION['nombre'] = $nombre;
-        // TODO revisar este error
-        header("Location: listado.php/");
-    } else {
-    ?>
+        error("Error en la consulta a la base de datos.");
+    }
+    if ($stmt->rowCount() == 0) {
+        unset($_POST['login']);
+        cerrarTodo($conProyecto, $stmt);
+        error("Error, Nombre de usuario o password incorrecto");
+    }
+    cerrarTodo($conProyecto, $stmt);
+    //Nos hemos validado correctamente creamos la sesion de usuario con el nombre de usuario
+    $_SESSION['nombre'] = $nombre;
+    // delante de los header no puede haber nada de html
+    header("Location: tiendas.php");
+} else {
+
+    require_once("./views/template/header.php");
+?>
+
+
+    <body style="background:silver;">
         <div class="container mt-5">
             <div class="d-flex justify-content-center h-100">
                 <div class="card">
@@ -90,7 +80,9 @@ function error($mensaje)
             }
             ?>
         </div>
-    <?php } ?>
-</body>
+    <?php
+}
+    ?>
+    </body>
 
-</html>
+    </html>
