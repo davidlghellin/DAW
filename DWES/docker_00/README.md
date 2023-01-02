@@ -11,3 +11,5 @@ docker run -it --rm --name my-running-app my-php-app
 docker build -t my-php-web-app .
 docker run -p 80:80 --rm -it --name my-web-app my-php-web-app
 ```
+
+Levantando el docker-compose tenemos la aplicación
