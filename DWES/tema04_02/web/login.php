@@ -41,8 +41,6 @@ if (isset($_POST['login'])) {
 
     require_once("./views/template/header.php");
 ?>
-
-
     <body style="background:silver;">
         <div class="container mt-5">
             <div class="d-flex justify-content-center h-100">
