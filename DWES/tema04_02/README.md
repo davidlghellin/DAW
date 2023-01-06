@@ -26,3 +26,21 @@ docker system prune -a
 http://localhost:8888/login.php
 
 http://localhost:8888/cesta/login.php
+
+## SonarQube
+
+Hemos añadido para poder tener el sonarqube funcionando
+
+```sh
+docker-compose -f docker-compose-sonarqube.yml up -d --build 
+```
+
+Deberemos entrar con user y pass `admin` para generar un proyecto manual para así poder obtener el token
+```sh
+cd web
+/opt/sonar-scanner/bin/sonar-scanner \
+  -Dsonar.projectKey=tema04_2 \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=http://sonarqube:9000 \
+  -Dsonar.login=XXXXXXXXXX__TOKEN__XXXXXXXXXX
+```
