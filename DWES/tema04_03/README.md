@@ -21,3 +21,8 @@ Para no tener que estar cancelar y volviendo a lanzar
 npm i nodemon -D
 npx nodemon index.js
 ```
+
+Instalamos el middleware morgan
+```
+npm i morgan
+```

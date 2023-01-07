@@ -2,7 +2,12 @@ const express = require('express');
 
 const app = express();
 
+const morgan = require('morgan');
+
 app.use(express.json());
+// usamos el middleware
+app.use(logger);
+app.use(morgan('dev')); // hay varios tipos
 
 app.get('/', (req, res) => {
     res.send('Hola mundo\n');
@@ -77,6 +82,15 @@ app.delete('/delete2/:userId', (req, res) => {
     res.send(`User ${req.params.userId} deleted\n`);
 });
 // http delete 127.0.0.1:3000/delete2/21
+
+// Middleward
+// es un manejador de petición, antes de que llege a su ruta destino
+function logger(req, res, next) {
+    console.log('Requeest recivida');
+    console.log(`Route ${req.protocol}://${req.get('host')}${req.originalUrl}`);
+    next();
+}
+// ya existe uno https://www.npmjs.com/package/morgan
 
 app.listen(3000, () => {
     console.log('Servidor en puerto 3000')
