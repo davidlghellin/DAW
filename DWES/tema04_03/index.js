@@ -9,9 +9,10 @@ app.use(express.json());
 app.use(logger);
 app.use(morgan('dev')); // hay varios tipos
 
-app.get('/', (req, res) => {
-    res.send('Hola mundo\n');
-});
+// Lo comentaomos para que pase por el index.html 
+//app.get('/', (req, res) => {
+//    res.send('Hola mundo\n');
+//});
 
 app.get('/about', (req, res) => {
     res.send('About me\n');
@@ -91,6 +92,9 @@ function logger(req, res, next) {
     next();
 }
 // ya existe uno https://www.npmjs.com/package/morgan
+
+
+app.use(express.static('public'));
 
 app.listen(3000, () => {
     console.log('Servidor en puerto 3000')
