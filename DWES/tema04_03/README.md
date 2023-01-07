@@ -31,3 +31,26 @@ Motor de plantillas
 ```
 npm install ejs
 ```
+
+Otros Frameworks de JS para APIS 
+
+https://adonisjs.com/
+https://sailsjs.com/
+https://koajs.com/
+https://hapi.dev/
+https://krakenjs.com/
+
+
+## Postgres
+
+
+```
+psql -h localhost -p 5432 -U postgres
+```
+
+```
+npm install sequelize
+npm install --save pg pg-hstore 
+```
+https://sequelize.org/docs/v6/getting-started/
+
