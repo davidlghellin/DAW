@@ -4,15 +4,30 @@ const app = express();
 
 const morgan = require('morgan');
 
+// Settings
+app.set('appName', 'Fast Express name');
+app.set('port', 3000);
+app.set('view engine', 'ejs');
+
+
+// Middleware
 app.use(express.json());
 // usamos el middleware
 app.use(logger);
 app.use(morgan('dev')); // hay varios tipos
 
+
+// Routes
+
 // Lo comentaomos para que pase por el index.html 
 //app.get('/', (req, res) => {
 //    res.send('Hola mundo\n');
 //});
+
+app.get('/', (req, res) => {
+    const data = [{ name: "david" }, { name: "joe" }, { name: "came" }];
+    res.render('index.ejs', { people: data });
+});
 
 app.get('/about', (req, res) => {
     res.send('About me\n');
@@ -96,7 +111,8 @@ function logger(req, res, next) {
 
 app.use(express.static('public'));
 
-app.listen(3000, () => {
-    console.log('Servidor en puerto 3000')
+app.listen(app.get('port'), () => {
+    console.log(app.get('appName'));
+    console.log('Servidor en puerto', app.get('port'))
 });
 

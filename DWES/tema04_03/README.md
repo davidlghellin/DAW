@@ -26,3 +26,8 @@ Instalamos el middleware morgan
 ```
 npm i morgan
 ```
+
+Motor de plantillas
+```
+npm install ejs
+```
