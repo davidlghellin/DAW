@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Abrimos con el visual studio la carpeta y preguntará pos si queremos reabrir en el contenedor, sí.",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC"
