@@ -9,4 +9,10 @@ which create-react-app
 
 ```sh
 create-react-app hola-mundo
+npx create-react-app hola-mundo #(sino hemos podido instalar con npm)
+```
+
+```sh
+cd hola-mundo
+npm start
 ```
