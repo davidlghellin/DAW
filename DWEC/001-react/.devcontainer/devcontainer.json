@@ -19,7 +19,23 @@
 			
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"dbaeumer.vscode-eslint"
+				"dbaeumer.vscode-eslint",
+				"msjsdiag.debugger-for-chrome",
+				"mgmcdermott.vscode-language-babel",
+				"aaron-bond.better-comments",
+				"thekalinga.bootstrap4-vscode",
+				"bracketpaircolordlw.bracket-pair-color-dlw",
+				"naumovs.color-highlight",
+				"rodrigovallades.es7-react-js-snippets",
+				"dbaeumer.vscode-eslint",
+				"kisstkondoros.vscode-gutter-preview",
+				"orta.vscode-jest",
+				"skyran.js-jsx-snippets",
+				"pkief.material-icon-theme",
+				"eg2.vscode-npm-script",
+				"christian-kohler.npm-intellisense",
+				"christian-kohler.path-intellisense",
+				"pflannery.vscode-versionlens"
 			]
 		}
 	},
